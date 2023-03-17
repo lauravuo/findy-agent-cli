@@ -1,8 +1,8 @@
 name: release
 on:
   push:
-    tags:
-      - "*"
+    # tags:
+    #   - "*"
 jobs:
   e2e:
     runs-on: ubuntu-latest
@@ -32,16 +32,16 @@ jobs:
           args: release --rm-dist
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  merge:
-    needs: goreleaser
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3
-        with:
-          ref: master
-      - name: merge
-        run: |
-          git fetch --tags origin
-          git merge $GITHUB_REF
-          git push origin master
+  # merge:
+  #   needs: goreleaser
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: checkout
+  #       uses: actions/checkout@v3
+  #       with:
+  #         ref: master
+  #     - name: merge
+  #       run: |
+  #         git fetch --tags origin
+  #         git merge $GITHUB_REF
+  #         git push origin master
