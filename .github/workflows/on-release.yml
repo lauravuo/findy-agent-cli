@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: ./install.sh ${github.ref_name}
+      - run: ./install.sh ${{ github.ref_name }}
       - run: ./bin/findy-agent-cli --version
   # merge:
   #   needs: goreleaser
